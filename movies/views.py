@@ -11,7 +11,6 @@ from .filters import MovieFilter
 class ListCreateMovieAPIView(ListCreateAPIView):
     serializer_class = MovieSerializer
     queryset = Movie.objects.all()
-    permission_classes = [IsAuthenticated]
     pagination_class = CustomPagination
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = MovieFilter
@@ -24,7 +23,8 @@ class ListCreateMovieAPIView(ListCreateAPIView):
 class RetrieveUpdateDestroyMovieAPIView(RetrieveUpdateDestroyAPIView):
     serializer_class = MovieSerializer
     queryset = Movie.objects.all()
-    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
+    permission_classes = [IsOwnerOrReadOnly]
+
 
 
 
