@@ -4,8 +4,8 @@ from django.db import models
 class Movie(models.Model):
     title = models.CharField(max_length=100)
     genre = models.CharField(max_length=100)
-    description = models.CharField(max_length=100)
-    imageUrl = models.CharField(max_length=300)
+    description = models.TextField(max_length=1000)
+    imageUrl = models.CharField(max_length=150)
     year = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
