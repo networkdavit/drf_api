@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils import timezone
 
 class Movie(models.Model):
     title = models.CharField(max_length=100)
@@ -7,11 +7,9 @@ class Movie(models.Model):
     description = models.TextField(max_length=1000)
     imageUrl = models.CharField(max_length=150)
     year = models.IntegerField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(default=timezone.now)
     creator = models.ForeignKey('auth.User', related_name='movies', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['-id']
-
-
